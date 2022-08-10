@@ -1,0 +1,112 @@
+org.jobrunr:
+  job-scheduler:
+    enabled: true
+  background-job-server:
+    enabled: true
+  dashboard:
+    enabled: true
+
+server:
+  port: 9090
+
+spring:
+
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/demoSLPM
+#    username: root
+#    password: 25121999dat
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+  datasource:
+      url: jdbc:mysql://34.142.228.186:3306/SLPM
+      username: dev1
+      password: dev1
+  jpa:
+    show-sql: true
+    hibernate:
+#      ddl-auto: update
+      batch_size: 1000
+      order_inserts: true
+      order_updates: true
+      generate_statistics: true
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+#        format_sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 492350829563-o6c3m51jg2o8jlfjoa3db3jp9nl7sa7l.apps.googleusercontent.com
+            clientSecret: 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
+            #          //  redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - profile
+#          facebook:
+#            clientId: 121189305185277
+#            clientSecret: 42ffe5aa7379e8326387e0fe16f34132
+#            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}" # Note that facebook now mandates the use of https redirect URIs, so make sure your app supports https in production
+#            scope:
+#              - email
+#              - public_profile
+#          github:
+#            clientId: d3e47fc2ddd966fa4352
+#            clientSecret: 3bc0f6b8332f93076354c2a5bada2f5a05aea60d
+#            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+#            scope:
+#              - user:email
+#              - read:user
+#        provider:
+#          facebook:
+#            authorizationUri: https://www.facebook.com/v3.0/dialog/oauth
+#            tokenUri: https://graph.facebook.com/v3.0/oauth/access_token
+#            userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
+
+  app:
+
+    auth:
+      tokenSecret: 04ca023b39512e46d0c2cf4b48d5aac61d34302994c87ed4eff225dcf3b0a218739f3897051a057f9b846a69ea2927a587044164b7bae5e1306219d50b588cb1
+      tokenExpirationMsec: 864000000
+    cors:
+      allowedOrigins: http://localhost:9090 # Comma separated list of allowed origins
+#  oauth2:
+#    # After successfully authenticating with the OAuth2 Provider,
+#    # we'll be generating an auth token for the user and sending the token to the
+#    # redirectUri mentioned by the client in the /oauth2/authorize request.
+#    # We're not using cookies because they won't work well in mobile clients.
+#    authorizedRedirectUris:
+#      - http://localhost:3000/oauth2/redirect
+#      - myandroidapp://oauth2/redirect
+#      - myiosapp://oauth2/redirect
+
+#  spring.mail.host=smtp.gmail.com
+#  spring.mail.port=587
+#  spring.mail.username=lenhandat@gmail.com
+#  spring.mail.password=lenhandat@
+#  spring.mail.properties.mail.smtp.auth=true
+#  spring.mail.properties.mail.smtp.starttls.enable=true
+  gs:
+    host: https://storage.googleapis.com
+    bucketName: abc
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    username: abc@fpt.edu.vn
+    password: abc
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    protocol: smtp
+    test-connection: true
